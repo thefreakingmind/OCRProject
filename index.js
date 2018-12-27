@@ -1,4 +1,9 @@
-//All The Dependencies used in The Application
+/* Dependencies
+ * Express Web Framework
+ * Image To Text Decoder
+ * Formidable
+ * AutoCorrect
+ */
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -27,6 +32,7 @@ const server = http.createServer((req, res)=>{
   }
 });
 
+//Listining to Server
 server.listen(port, hostname,() =>{
   console.log("Server Started");
 });
