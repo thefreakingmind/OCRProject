@@ -9,21 +9,27 @@ const app = express();
 const http = require('http');
 const autocorrect = require('autocorrect')();
 const imageToTextDecoder = require('image-to-text');
-const hostname = '127.0.0.1';
-const port = 3000;
 const formidable = require('formidable');
 const responseTime = require('response-time');
 const fs = require('fs');
+const port = 3000;
+const path = require('path');
+
+//View Engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 
-//The Basic Server Setup on Nodejs
-const server = http.createServer((req,res)=>{
-  res.statusCode = 200;
-  res.end("Hello World");
+app.get('/',(req, res)=>{
+  res.render("index");
+});
+
+//Static Files
+app.set(express.static(path.join(__dirname,'static')));
+
+app.listen(port , ()=>{
+	console.log("Hello World");
 });
 
 
-//Server Listening
-server.listen(port, hostname,() =>{
-  console.log("Server Started");
-});
+
