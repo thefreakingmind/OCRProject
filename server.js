@@ -14,14 +14,25 @@ const responseTime = require('response-time');
 const fs = require('fs');
 const port = 3000;
 const path = require('path');
+const bodyParser = require('body-parser');
+
 
 //View Engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
+//Body Parser Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
+
+
 app.get('/',(req, res)=>{
-  res.render("index");
+  res.render("index", 
+	{
+	  Title:'Customer',
+	});
 });
 
 //Static Files
